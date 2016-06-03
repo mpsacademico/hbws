@@ -27,17 +27,15 @@ function le($codigo){
 						   "preco_unitario"=>$preco_unitario,
 						   "ingredientes"=>$ingredientes);		
 	}
-	//por enquanto retorna o cardápio
 	echo json_encode($retorno, true);
 }
 //retorna cardápio de lanches
-function lc($codigo){	
+function lc(){	
 	header('Content-Type: application/json');
 	$con = new PDO("mysql:host=localhost;dbname=hummm;charset=utf8", "root", ""); 
 	$con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
 	$sql = "SELECT la.id_lanche, la.nome, la.preco_unitario, GROUP_CONCAT(ins.ingrediente_individual ORDER BY ins.id_ingrediente ASC) AS ingredientes FROM lanche as la, (SELECT l.id_lanche, li.id_ingrediente, CONCAT(i.id_ingrediente,';' ,i.nome) AS ingrediente_individual FROM lanche AS l, lanche_tem_ingrediente AS li, ingrediente AS i WHERE l.id_lanche = li.id_lanche AND li.id_ingrediente = i.id_ingrediente) AS ins WHERE la.id_lanche = ins.id_lanche GROUP BY la.id_lanche ORDER BY la.id_lanche ASC";
-	$rs = $con->prepare($sql);		
-	$rs->bindParam(1,$codigo);
+	$rs = $con->prepare($sql);	
 	$rs->execute();
 	while($l = $rs->fetch(PDO::FETCH_OBJ)){
 		$id_lanche = (int) $l->id_lanche;
@@ -54,7 +52,6 @@ function lc($codigo){
 						   "preco_unitario"=>$preco_unitario,
 						   "ingredientes"=>$ingredientes);		
 	}
-	//por enquanto retorna o cardápio
 	echo json_encode($retorno, true);
 }
 ?>

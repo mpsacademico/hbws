@@ -5,12 +5,11 @@ switch($_SERVER['REQUEST_METHOD']){
 	case 'GET':
 		if(isset($_GET['categoria']) && !empty($_GET['categoria'])){
 			if(strcmp($_GET['categoria'],"lanche")==0){
-				if(isset($_GET['codigo']) && !empty($_GET['codigo'])){
-					//echo "categoria lanche com id";
+				if(isset($_GET['codigo']) && !empty($_GET['codigo'])){					
 					le($_GET['codigo']);
 				}				
 				else{
-					echo "todos";
+					lc();
 				}
 			}
 			else{
