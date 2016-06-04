@@ -11,4 +11,5 @@ Como usar este Web Service?
 1. Obter todas as informações das mercadorias de uma categoria
 
 ID	NULL	Parâmetro		Tipo		Descrição									Observação
+
 01	X		categoria		texto		Categoria de Mercadorias
