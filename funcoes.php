@@ -53,14 +53,15 @@ function lc(){
 	echo json_encode($retorno, true);	
 }
 //registra estatísticas de requisição
-function rer($st, $rm, $rt, $rea){
+function rer($op, $st, $rm, $rt, $rea){
 	require('conexao.php');
-	$sql = "INSERT INTO rstat(status, request_method, request_time, remote_addr) VALUES (?, ?, FROM_UNIXTIME(?), ?)";
-	$rs = $con->prepare($sql);		
-	$rs->bindParam(1,$st);
-	$rs->bindParam(2,$rm);
-	$rs->bindParam(3,$rt);
-	$rs->bindParam(4,$rea);
+	$sql = "INSERT INTO rstat(operacao, status, request_method, request_time, remote_addr) VALUES (?, ?, ?, FROM_UNIXTIME(?), ?)";
+	$rs = $con->prepare($sql);
+	$rs->bindParam(1,$op);
+	$rs->bindParam(2,$st);
+	$rs->bindParam(3,$rm);
+	$rs->bindParam(4,$rt);
+	$rs->bindParam(5,$rea);
 	$rs->execute();
 }
 ?>
