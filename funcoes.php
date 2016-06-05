@@ -52,4 +52,12 @@ function lc(){
 	}
 	echo json_encode($retorno, true);
 }
+//registra estatísticas de requisição
+function rer(){
+	$st = "status";
+	$rm = $_SERVER['REQUEST_METHOD'];
+	$rt = $_SERVER['REQUEST_TIME'];
+	$rea = $_SERVER['REMOTE_ADDR'];
+	echo $st." ".$rm." ".$rt." ".$rea;
+}
 ?>
