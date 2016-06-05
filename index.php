@@ -1,4 +1,6 @@
 <?php	
+date_default_timezone_set("America/Sao_Paulo");
+setlocale(LC_ALL, 'pt_BR');
 $retorno = array();
 $op = 0;
 $st = 0;
@@ -36,7 +38,7 @@ switch($_SERVER['REQUEST_METHOD']){
 		$st = 405;
 		$retorno = array("requisicao"=>array("estado"=>"405","erro"=>"Método HTTP não permitido"));
 		break;	
-}	
+}
 	$rm = $_SERVER['REQUEST_METHOD'];
 	$rt = $_SERVER['REQUEST_TIME'];
 	$rea = $_SERVER['REMOTE_ADDR'];
