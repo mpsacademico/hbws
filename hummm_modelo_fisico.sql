@@ -88,6 +88,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `rstat` (
   `id_rstat` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
+  `operacao` INT UNSIGNED NOT NULL ,
   `status` VARCHAR(5) NOT NULL ,
   `request_method` VARCHAR(10) NOT NULL ,
   `request_time` TIMESTAMP NOT NULL ,
