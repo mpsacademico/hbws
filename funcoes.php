@@ -6,7 +6,7 @@ function mer($estado, $erro){
 //retorna lanche específico
 function le($codigo){	
 	header('Content-Type: application/json');	
-	require_once('conexao.php');
+	require('conexao.php');
 	$sql = "SELECT la.id_lanche, la.nome, la.preco_unitario, GROUP_CONCAT(ins.ingrediente_individual ORDER BY ins.id_ingrediente ASC) AS ingredientes FROM lanche as la, (SELECT l.id_lanche, li.id_ingrediente, CONCAT(i.id_ingrediente,';' ,i.nome) AS ingrediente_individual FROM lanche AS l, lanche_tem_ingrediente AS li, ingrediente AS i WHERE l.id_lanche = li.id_lanche AND li.id_ingrediente = i.id_ingrediente) AS ins WHERE la.id_lanche = ins.id_lanche AND la.id_lanche = ? GROUP BY la.id_lanche ORDER BY la.id_lanche ASC";
 	$rs = $con->prepare($sql);		
 	$rs->bindParam(1,$codigo);
@@ -31,7 +31,7 @@ function le($codigo){
 //retorna cardápio de lanches
 function lc(){	
 	header('Content-Type: application/json');
-	require_once('conexao.php');
+	require('conexao.php');
 	$sql = "SELECT la.id_lanche, la.nome, la.preco_unitario, GROUP_CONCAT(ins.ingrediente_individual ORDER BY ins.id_ingrediente ASC) AS ingredientes FROM lanche as la, (SELECT l.id_lanche, li.id_ingrediente, CONCAT(i.id_ingrediente,';' ,i.nome) AS ingrediente_individual FROM lanche AS l, lanche_tem_ingrediente AS li, ingrediente AS i WHERE l.id_lanche = li.id_lanche AND li.id_ingrediente = i.id_ingrediente) AS ins WHERE la.id_lanche = ins.id_lanche GROUP BY la.id_lanche ORDER BY la.id_lanche ASC";
 	$rs = $con->prepare($sql);	
 	$rs->execute();
@@ -50,14 +50,17 @@ function lc(){
 						   "preco_unitario"=>$preco_unitario,
 						   "ingredientes"=>$ingredientes);		
 	}
-	echo json_encode($retorno, true);
+	echo json_encode($retorno, true);	
 }
 //registra estatísticas de requisição
-function rer(){
-	$st = "status";
-	$rm = $_SERVER['REQUEST_METHOD'];
-	$rt = $_SERVER['REQUEST_TIME'];
-	$rea = $_SERVER['REMOTE_ADDR'];
-	echo $st." ".$rm." ".$rt." ".$rea;
+function rer($st, $rm, $rt, $rea){
+	require('conexao.php');
+	$sql = "INSERT INTO rstat(status, request_method, request_time, remote_addr) VALUES (?, ?, FROM_UNIXTIME(?), ?)";
+	$rs = $con->prepare($sql);		
+	$rs->bindParam(1,$st);
+	$rs->bindParam(2,$rm);
+	$rs->bindParam(3,$rt);
+	$rs->bindParam(4,$rea);
+	$rs->execute();
 }
 ?>
