@@ -1,7 +1,7 @@
 <?php
 //mensagem estado requisição
 function mer($estado, $erro){
-	return array("solicitacao"=>array("estado"=>$estado,"erro"=>$erro));
+	return array("solicitacao"=>array("estado"=>$estado,"mensagem"=>$erro));
 }
 //retorna lanche específico
 function le($codigo){		
@@ -78,13 +78,14 @@ function finaliza($codigo){
 	$retorno = array();
 	if($r){
 		$retorno = mer(200,"Pedido finalizado com sucesso!");
+		$retorno['pedido'] = array("total"=>total_pedido($codigo));
 	}
 	else{
 		$retorno = mer(503,"Finalização de pedido falhou!");
 	}
 	return $retorno;
 }
-//adiciona mercadorias a um pedido
+//adiciona mercadorias a um pedido - sem confirmação
 function adiciona($codigo_pedido, $mercadorias){
 	require('conexao.php');
 	$ms = json_decode($mercadorias, true);
@@ -96,6 +97,19 @@ function adiciona($codigo_pedido, $mercadorias){
 		$rs->bindParam(3,$value['quantidade']);	
 		$r = $rs->execute();
 	}
+	return mer(200,"Mercadorias adicionadas com sucesso!");
+}
+//calcula valor total de um pedido
+function total_pedido($codigo){
+	require('conexao.php');
+	$sql = "SELECT SUM(quantidade*preco_unitario) AS total FROM pedido_tem_lanche AS pl, lanche AS l WHERE pl.id_lanche = l.id_lanche AND pl.id_pedido = ?";
+	$rs = $con->prepare($sql);		
+	$rs->bindParam(1,$codigo);
+	$rs->execute();
+	while($l = $rs->fetch(PDO::FETCH_OBJ)){
+		$total = $l->total;
+	}
+	return (float) $total;
 }
 //registra estatísticas de requisição
 function rer($op, $st, $rm, $rt, $rea){
