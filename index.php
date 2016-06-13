@@ -35,32 +35,37 @@ switch($_SERVER['REQUEST_METHOD']){
 	case 'POST':
 		if(isset($_POST['acao']) && !empty($_POST['acao'])){
 			switch($_POST['acao']){
-				case 'novo':
+				case 'novo':					
 					$apelido = "";
 					if(isset($_POST['apelido-cliente'])){
 						$apelido = $_POST['apelido-cliente'];
 					}
+					$op = 5;
+					$st = 200;
 					$retorno = novo($apelido);
 					break;				
 				case 'finalizar':
-					if(isset($_POST['codigo']) && !empty($_POST['codigo'])){
+					$op = 6;
+					if(isset($_POST['codigo']) && !empty($_POST['codigo'])){						
+						$st = 200;
 						$retorno = finaliza($_POST['codigo']);
-					}else{
-						$op = 4;
+					}else{						
 						$st = 404;
 						$retorno = mer($st,"Argumentos da requisição inválidos");
 					}					
 					break;					
 				case 'cancelar':
+					$op = 7;
 					$st = 404;
 					$retorno = mer($st,"Ação temporariamente indisponível");
 					break;					
 				case 'adicionar':
-					if(isset($_POST['codigo-pedido']) && !empty($_POST['codigo-pedido']) &&
-						isset($_POST['mercadorias']) && !empty($_POST['mercadorias'])){
+					$op = 8;
+					if(isset($_POST['codigo-pedido']) && !empty($_POST['codigo-pedido']) &&						
+						isset($_POST['mercadorias']) && !empty($_POST['mercadorias'])){						
+						$st = 200;
 						$retorno = adiciona($_POST['codigo-pedido'],$_POST['mercadorias']);
-					}else{
-						$op = 4;
+					}else{						
 						$st = 404;
 						$retorno = mer($st,"Argumentos da requisição inválidos");
 					}	
