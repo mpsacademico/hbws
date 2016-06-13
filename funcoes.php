@@ -50,6 +50,9 @@ function lc(){
 	}
 	return $retorno;
 }
+
+
+
 //registra estatísticas de requisição
 function rer($op, $st, $rm, $rt, $rea){
 	require('conexao.php');
