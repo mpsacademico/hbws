@@ -61,6 +61,7 @@ function novo($apelido_cliente){
 	$retorno = array();
 	if($r){
 		$retorno = mer(200,"Pedido inserido com sucesso!");
+		$retorno['pedido'] = array("codigo"=>(int)$con->lastInsertId());
 	}
 	else{
 		$retorno = mer(503,"Inserção de pedido falhou!");
