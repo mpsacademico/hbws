@@ -4,8 +4,7 @@ function mer($estado, $erro){
 	return array("solicitacao"=>array("estado"=>$estado,"erro"=>$erro));
 }
 //retorna lanche específico
-function le($codigo){	
-	header('Content-Type: application/json');	
+function le($codigo){		
 	require('conexao.php');
 	$sql = "SELECT la.id_lanche, la.nome, la.preco_unitario, GROUP_CONCAT(ins.ingrediente_individual ORDER BY ins.id_ingrediente ASC) AS ingredientes FROM lanche as la, (SELECT l.id_lanche, li.id_ingrediente, CONCAT(i.id_ingrediente,';' ,i.nome) AS ingrediente_individual FROM lanche AS l, lanche_tem_ingrediente AS li, ingrediente AS i WHERE l.id_lanche = li.id_lanche AND li.id_ingrediente = i.id_ingrediente) AS ins WHERE la.id_lanche = ins.id_lanche AND la.id_lanche = ? GROUP BY la.id_lanche ORDER BY la.id_lanche ASC";
 	$rs = $con->prepare($sql);		
@@ -26,11 +25,10 @@ function le($codigo){
 						   "preco_unitario"=>$preco_unitario,
 						   "ingredientes"=>$ingredientes);		
 	}
-	echo json_encode($retorno, true);
+	return $retorno;
 }
 //retorna cardápio de lanches
-function lc(){	
-	header('Content-Type: application/json');
+function lc(){		
 	require('conexao.php');
 	$sql = "SELECT la.id_lanche, la.nome, la.preco_unitario, GROUP_CONCAT(ins.ingrediente_individual ORDER BY ins.id_ingrediente ASC) AS ingredientes FROM lanche as la, (SELECT l.id_lanche, li.id_ingrediente, CONCAT(i.id_ingrediente,';' ,i.nome) AS ingrediente_individual FROM lanche AS l, lanche_tem_ingrediente AS li, ingrediente AS i WHERE l.id_lanche = li.id_lanche AND li.id_ingrediente = i.id_ingrediente) AS ins WHERE la.id_lanche = ins.id_lanche GROUP BY la.id_lanche ORDER BY la.id_lanche ASC";
 	$rs = $con->prepare($sql);	
@@ -50,7 +48,7 @@ function lc(){
 						   "preco_unitario"=>$preco_unitario,
 						   "ingredientes"=>$ingredientes);		
 	}
-	echo json_encode($retorno, true);	
+	return $retorno;
 }
 //registra estatísticas de requisição
 function rer($op, $st, $rm, $rt, $rea){

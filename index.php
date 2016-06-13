@@ -12,13 +12,13 @@ switch($_SERVER['REQUEST_METHOD']){
 				if(isset($_GET['codigo']) && !empty($_GET['codigo'])){
 					$op = 1;
 					$st = 200;
-					le($_GET['codigo']);
+					$retorno = le($_GET['codigo']);
 				}				
 				else{
 					$op = 2;
 					$op = "2";
 					$st = 200;
-					lc();
+					$retorno = lc();
 				}
 			}
 			else{
@@ -39,11 +39,11 @@ switch($_SERVER['REQUEST_METHOD']){
 		$retorno = array("requisicao"=>array("estado"=>"405","erro"=>"Método HTTP não permitido"));
 		break;	
 }
-	$rm = $_SERVER['REQUEST_METHOD'];
-	$rt = $_SERVER['REQUEST_TIME'];
-	$rea = $_SERVER['REMOTE_ADDR'];
-	rer($op, $st,$rm,$rt,$rea);
-//header('Content-Type: application/json');
-//$retorno = json_encode($retorno,true);
-//echo $retorno;
+$rm = $_SERVER['REQUEST_METHOD'];
+$rt = $_SERVER['REQUEST_TIME'];
+$rea = $_SERVER['REMOTE_ADDR'];
+rer($op, $st,$rm,$rt,$rea);
+header('Content-Type: application/json');
+$retorno = json_encode($retorno, true);
+echo $retorno;
 ?>
