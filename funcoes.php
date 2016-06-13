@@ -50,6 +50,7 @@ function lc(){
 	}
 	return $retorno;
 }
+//registra um novo pedido
 function novo($apelido_cliente){
 	require('conexao.php');
 	$sql = "INSERT INTO pedido(id_pedido, apelido_cliente, ts_abertura) VALUES (null, ?, FROM_UNIXTIME(?))";
@@ -63,6 +64,23 @@ function novo($apelido_cliente){
 	}
 	else{
 		$retorno = mer(503,"Inserção de pedido falhou!");
+	}
+	return $retorno;
+}
+//finaliza um pedido aberto - sem total e validação
+function finaliza($codigo){
+	require('conexao.php');
+	$sql = "UPDATE pedido SET ts_fechamento = FROM_UNIXTIME(?) WHERE id_pedido = ?";
+	$rs = $con->prepare($sql);	
+	$rs->bindParam(1,time());
+	$rs->bindParam(2,$codigo);
+	$r = $rs->execute();
+	$retorno = array();
+	if($r){
+		$retorno = mer(200,"Pedido finalizado com sucesso!");
+	}
+	else{
+		$retorno = mer(503,"Finalização de pedido falhou!");
 	}
 	return $retorno;
 }

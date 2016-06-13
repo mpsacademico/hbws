@@ -43,7 +43,13 @@ switch($_SERVER['REQUEST_METHOD']){
 					$retorno = novo($apelido);
 					break;				
 				case 'finalizar':
-					echo "finalizar";
+					if(isset($_POST['codigo']) && !empty($_POST['codigo'])){
+						$retorno = finaliza($_POST['codigo']);
+					}else{
+						$op = 4;
+						$st = 404;
+						$retorno = mer($st,"Argumentos da requisição inválidos");
+					}					
 					break;					
 				case 'cancelar':
 					echo "cancelar";
