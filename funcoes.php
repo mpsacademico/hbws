@@ -84,6 +84,19 @@ function finaliza($codigo){
 	}
 	return $retorno;
 }
+//adiciona mercadorias a um pedido
+function adiciona($codigo_pedido, $mercadorias){
+	require('conexao.php');
+	$ms = json_decode($mercadorias, true);
+	$sql = "INSERT INTO pedido_tem_lanche(id_pedido, id_lanche, quantidade) VALUES (?, ?, ?)";
+	foreach ($ms as $key => $value){
+		$rs = $con->prepare($sql);
+		$rs->bindParam(1,$codigo_pedido);
+		$rs->bindParam(2,$value['id-mercadoria']);
+		$rs->bindParam(3,$value['quantidade']);	
+		$r = $rs->execute();
+	}
+}
 //registra estatísticas de requisição
 function rer($op, $st, $rm, $rt, $rea){
 	require('conexao.php');

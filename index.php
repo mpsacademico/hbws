@@ -56,7 +56,14 @@ switch($_SERVER['REQUEST_METHOD']){
 					$retorno = mer($st,"Ação temporariamente indisponível");
 					break;					
 				case 'adicionar':
-					echo "adicionar";
+					if(isset($_POST['codigo-pedido']) && !empty($_POST['codigo-pedido']) &&
+						isset($_POST['mercadorias']) && !empty($_POST['mercadorias'])){
+						$retorno = adiciona($_POST['codigo-pedido'],$_POST['mercadorias']);
+					}else{
+						$op = 4;
+						$st = 404;
+						$retorno = mer($st,"Argumentos da requisição inválidos");
+					}	
 					break;					
 				default:
 					$st = 404;
