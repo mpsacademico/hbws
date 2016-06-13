@@ -52,13 +52,15 @@ switch($_SERVER['REQUEST_METHOD']){
 					}					
 					break;					
 				case 'cancelar':
-					echo "cancelar";
+					$st = 404;
+					$retorno = mer($st,"Ação temporariamente indisponível");
 					break;					
 				case 'adicionar':
 					echo "adicionar";
 					break;					
 				default:
-					echo "default";
+					$st = 404;
+					$retorno = mer($st,"Ação indisponível ou inexistente");
 					break;			
 			}			
 		}else{
