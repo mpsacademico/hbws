@@ -36,7 +36,11 @@ switch($_SERVER['REQUEST_METHOD']){
 		if(isset($_POST['acao']) && !empty($_POST['acao'])){
 			switch($_POST['acao']){
 				case 'novo':
-					echo "novo";
+					$apelido = "";
+					if(isset($_POST['apelido-cliente'])){
+						$apelido = $_POST['apelido-cliente'];
+					}
+					$retorno = novo($apelido);
 					break;				
 				case 'finalizar':
 					echo "finalizar";

@@ -50,9 +50,22 @@ function lc(){
 	}
 	return $retorno;
 }
-
-
-
+function novo($apelido_cliente){
+	require('conexao.php');
+	$sql = "INSERT INTO pedido(id_pedido, apelido_cliente, ts_abertura) VALUES (null, ?, FROM_UNIXTIME(?))";
+	$rs = $con->prepare($sql);
+	$rs->bindParam(1,$apelido_cliente);
+	$rs->bindParam(2,time());
+	$r = $rs->execute();
+	$retorno = array();
+	if($r){
+		$retorno = mer(200,"Pedido inserido com sucesso!");
+	}
+	else{
+		$retorno = mer(503,"Inserção de pedido falhou!");
+	}
+	return $retorno;
+}
 //registra estatísticas de requisição
 function rer($op, $st, $rm, $rt, $rea){
 	require('conexao.php');
