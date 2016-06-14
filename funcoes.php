@@ -55,8 +55,9 @@ function novo($apelido_cliente){
 	require('conexao.php');
 	$sql = "INSERT INTO pedido(id_pedido, apelido_cliente, ts_abertura) VALUES (null, ?, FROM_UNIXTIME(?))";
 	$rs = $con->prepare($sql);
+	$ts = time();
 	$rs->bindParam(1,$apelido_cliente);
-	$rs->bindParam(2,time());
+	$rs->bindParam(2,$ts);
 	$r = $rs->execute();
 	$retorno = array();
 	if($r){
@@ -71,10 +72,9 @@ function novo($apelido_cliente){
 //finaliza um pedido aberto - sem total e validação
 function finaliza($codigo){
 	require('conexao.php');
-	$sql = "UPDATE pedido SET ts_fechamento = FROM_UNIXTIME(?) WHERE id_pedido = ?";
+	$sql = "UPDATE pedido SET ts_fechamento = FROM_UNIXTIME(".time().") WHERE id_pedido = ?";
 	$rs = $con->prepare($sql);	
-	$rs->bindParam(1,time());
-	$rs->bindParam(2,$codigo);
+	$rs->bindParam(1,$codigo);
 	$r = $rs->execute();
 	$retorno = array();
 	if($r){
