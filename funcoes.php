@@ -124,4 +124,21 @@ function rer($op, $st, $rm, $rt, $rea){
 	$rs->bindParam(5,$rea);
 	$rs->execute();
 }
+//retorna cardápio de lanches
+function rs_mh(){		
+	$retorno = array();
+	$metodo = array();
+	$contagem = array();
+	require('conexao.php');
+	$sql = "SELECT request_method AS metodo_http, COUNT(*) AS contagem FROM rstat GROUP BY metodo_http";
+	$rs = $con->prepare($sql);	
+	$rs->execute();
+	while($l = $rs->fetch(PDO::FETCH_OBJ)){		
+		$metodo[] = $l->metodo_http;
+		$contagem[] = (int) $l->contagem;		
+	}		
+	$retorno["metodo_http"] = $metodo;
+	$retorno["contagem"] = $contagem;
+	return json_encode($retorno, true);
+}
 ?>
