@@ -1,7 +1,8 @@
-Bem-vindo ao Hummm Burgueria Web Service
+Hummm Burgueria Web Service
 =======================
 
-Este é um projeto universitário da disciplina de **Sistemas Distribuídos**
+HBWS é um sistema para uma rede de lanchonetes fictícia.  
+Este é um projeto universitário da disciplina de **Sistemas Distribuídos**.
 
 Como usar este Web Service?
 ------------
@@ -10,6 +11,6 @@ Como usar este Web Service?
 
 1. Obter todas as informações das mercadorias de uma categoria
 
-ID	NULL	Parâmetro		Tipo		Descrição									Observação
-
-01	X		categoria		texto		Categoria de Mercadorias
+ID | NULL | Parâmetro | Tipo | Descrição | Observação
+-- | ---- | --------- | ---- | --------- | ---------:
+01 | X | categoria	|	texto |	Categoria de Mercadorias
