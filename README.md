@@ -16,6 +16,10 @@ ID | O | Parâmetro | Tipo | Descrição
 1 | X | acao | Texto "novo" | Ação para criar um novo pedido
 2 |  | apelido-cliente | Texto | Apelido do cliente que poderá ser impresso na embalagem da mercadoria
 
+```
+index.php?acao=novo&apelido-cliente=marcos
+```
+
 2. Finalizar um pedido aberto
 
 ID | O | Parâmetro | Tipo | Descrição
