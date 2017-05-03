@@ -17,7 +17,7 @@ ID | O | Parâmetro | Tipo | Descrição
 2 |  | apelido-cliente | Texto | Apelido do cliente que poderá ser impresso na embalagem da mercadoria
 
 ```
-index.php?acao=novo&apelido-cliente=marcos
+acao=novo&apelido-cliente=marcos
 ```
 
 2. Finalizar um pedido aberto
@@ -27,12 +27,20 @@ ID | O | Parâmetro | Tipo | Descrição
 1 | X | acao | Texto “finalizar” | Ação para finalizar um pedido aberto
 2 | X | codigo | Inteiro | Código do pedido que será finalizado 
 
+```
+acao=finalizar&codigo=1
+```
+
 3. Cancelar um pedido aberto
 
 ID | O | Parâmetro | Tipo | Descrição
 :---: | :---: | :---: | :---: | :---
 1 | X | acao | Texto “cancelar” | Ação para cancelar um pedido aberto
 2 | X | codigo | Inteiro | Código do pedido que será cancelado
+
+```
+acao=cancelar&codigo=1
+```
 
 4. Adicionar mercadorias a um pedido específico
 
@@ -41,6 +49,10 @@ ID | O | Parâmetro | Tipo | Descrição
 1 | X | acao | Texto “adicionar” | Ação para adicionar mercadorias a um pedido
 2 | X | codigo-pedido | Inteiro | Código do pedido que irá receber mercadorias 
 3 | X | mercadorias | JSON | Documento com as mercadorias e quantidades
+
+```
+acao=adicionar&codigo-pedido=1&mercadoria={"categoria":"lanches","id-mercadoria":1:"Misto Quentes"}
+```
 
 Exemplo de retorno JSON para mercadorias:
 ```javascript
@@ -61,11 +73,19 @@ ID | O | Parâmetro | Tipo | Descrição
 :---: | :---: | :---: | :---: | :---
 01 | X | categoria | texto |	Categoria de Mercadorias
 
+```
+index.php?categoria=lanches
+```
+
 2. Obter informações sobre uma mercadoria específica
 
 ID | O | Parâmetro | Tipo | Descrição
 :---: | :---: | :---: | :---: | :---
 1 | X | categoria | Texto | Categoria da mercadoria
 2 | X | codigo | Inteiro | Identificador único da mercadoria
+
+```
+index.php?categoria=lanches%codigo=1
+```
 
 OBS: Disponibilidade atual apenas para categoria “lanche”
