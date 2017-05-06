@@ -74,7 +74,7 @@ ID | O | Parâmetro | Tipo | Descrição
 01 | X | categoria | texto |	Categoria de Mercadorias
 
 ```
-index.php?categoria=lanches
+index.php?categoria=lanche
 ```
 
 2. Obter informações sobre uma mercadoria específica
@@ -85,7 +85,45 @@ ID | O | Parâmetro | Tipo | Descrição
 2 | X | codigo | Inteiro | Identificador único da mercadoria
 
 ```
-index.php?categoria=lanches%codigo=1
+index.php?categoria=lanche&codigo=1
+```
+
+```javascript
+{
+id_lanche: 1,
+nome_lanche: "X-Salada",
+preco_unitario: 5.3,
+ingredientes: [
+{
+id_ingrediente: 1,
+nome: "Pão"
+},
+{
+id_ingrediente: 2,
+nome: "Hamburguer"
+},
+{
+id_ingrediente: 3,
+nome: "Presunto"
+},
+{
+id_ingrediente: 4,
+nome: "Mussarela"
+},
+{
+id_ingrediente: 5,
+nome: "Alface"
+},
+{
+id_ingrediente: 6,
+nome: "Tomate"
+},
+{
+id_ingrediente: 7,
+nome: "Maionese"
+}
+]
+}
 ```
 
 OBS: Disponibilidade atual apenas para categoria “lanche”
