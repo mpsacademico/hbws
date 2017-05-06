@@ -57,11 +57,11 @@ acao=adicionar&codigo-pedido=1&mercadoria={"categoria":"lanches","id-mercadoria"
 Exemplo de retorno JSON para mercadorias:
 ```javascript
 {
-{
-categoria: “<texto>”,
-id-mercadoria: <inteiro>,
-quantidade: <inteiro>
-}
+  {
+    categoria: “<texto>”,
+    id-mercadoria: <inteiro>,
+    quantidade: <inteiro>
+  }
 }
 ```
 
@@ -90,39 +90,39 @@ index.php?categoria=lanche&codigo=1
 
 ```javascript
 {
-id_lanche: 1,
-nome_lanche: "X-Salada",
-preco_unitario: 5.3,
-ingredientes: [
-{
-id_ingrediente: 1,
-nome: "Pão"
-},
-{
-id_ingrediente: 2,
-nome: "Hamburguer"
-},
-{
-id_ingrediente: 3,
-nome: "Presunto"
-},
-{
-id_ingrediente: 4,
-nome: "Mussarela"
-},
-{
-id_ingrediente: 5,
-nome: "Alface"
-},
-{
-id_ingrediente: 6,
-nome: "Tomate"
-},
-{
-id_ingrediente: 7,
-nome: "Maionese"
-}
-]
+  id_lanche: 1,
+  nome_lanche: "X-Salada",
+  preco_unitario: 5.3,
+  ingredientes: [
+    {
+      id_ingrediente: 1,
+      nome: "Pão"
+    },
+    {
+      id_ingrediente: 2,
+      nome: "Hamburguer"
+    },
+    {
+      id_ingrediente: 3,
+      nome: "Presunto"
+    },
+    {
+      id_ingrediente: 4,
+      nome: "Mussarela"
+    },
+    {
+      id_ingrediente: 5,
+      nome: "Alface"
+    },
+    {
+      id_ingrediente: 6,
+      nome: "Tomate"
+    },
+    {
+      id_ingrediente: 7,
+      nome: "Maionese"
+    }
+  ]
 }
 ```
 
