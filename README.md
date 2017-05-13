@@ -2,7 +2,6 @@ Hummm Burgueria Web Service
 =======================
 
 HBWS é um sistema para uma rede de lanchonetes fictícia.  
-Este é um projeto universitário da disciplina de **Sistemas Distribuídos**.
 
 Como usar este Web Service?
 ------------
@@ -127,3 +126,5 @@ index.php?categoria=lanche&codigo=1
 ```
 
 OBS: Disponibilidade atual apenas para categoria “lanche”
+
+Este foi um projeto universitário da disciplina de **Sistemas Distribuídos**
