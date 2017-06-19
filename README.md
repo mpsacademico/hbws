@@ -1,10 +1,11 @@
 # Hummm Burgueria Web Service
 
 HBWS é um protótipo de sistema para uma rede de lanchonetes fictícia denominada Hummm Burgueria.  
-O objetivo é integrar e automatizar o sistema administrativo e de suplementos das unidades da rede.  
-Este foi um projeto universitário da disciplina de Sistemas Distribuídos envolvendo codificação e documentação.
+O objetivo é integrar e automatizar o sistema administrativo e de suplementos das unidades de toda a rede.  
+Este foi um projeto universitário da disciplina de Sistemas Distribuídos envolvendo codificação e documentação.  
+Os dados estatísticos do sistema são coletados e exibidos pelo sistema cliente [HBWS stats](https://github.com/mpsacademico/hbws-stats#hbwsstats).
 
-A documentação abaixo demonstra exemplos do uso funcionalidades.
+A documentação abaixo demonstra exemplos de uso funcionalidades.
 
 **[Requisições via POST](#requisições-via-post)**  
 [1. Registrar um novo pedido](#1-registrar-um-novo-pedido)  
