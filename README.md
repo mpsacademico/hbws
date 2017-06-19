@@ -1,14 +1,14 @@
-Hummm Burgueria Web Service
-=======================
+# Hummm Burgueria Web Service
 
-HBWS é um sistema para uma rede de lanchonetes fictícia.  
+HBWS é um protótipo de sistema para uma rede de lanchonetes fictícia denominada Hummm Burgueria.  
+O objetivo é integrar e automatizar o sistema administrativo e de suplementos das unidades da rede.  
+Este foi um projeto universitário da disciplina de Sistemas Distribuídos.
 
-Como usar este Web Service?
-------------
+## Como usar este Web Service?
 
-##### Requisições via POST
+### Requisições via POST
 
-1. Registrar um novo pedido
+#### 1. Registrar um novo pedido
 
 ID | O | Parâmetro | Tipo | Descrição
 :---: | :---: | :---: | :---: | :---
@@ -19,7 +19,7 @@ ID | O | Parâmetro | Tipo | Descrição
 acao=novo&apelido-cliente=marcos
 ```
 
-2. Finalizar um pedido aberto
+#### 2. Finalizar um pedido aberto
 
 ID | O | Parâmetro | Tipo | Descrição
 :---: | :---: | :---: | :---: | :---
@@ -30,7 +30,7 @@ ID | O | Parâmetro | Tipo | Descrição
 acao=finalizar&codigo=1
 ```
 
-3. Cancelar um pedido aberto
+#### 3. Cancelar um pedido aberto
 
 ID | O | Parâmetro | Tipo | Descrição
 :---: | :---: | :---: | :---: | :---
@@ -41,7 +41,7 @@ ID | O | Parâmetro | Tipo | Descrição
 acao=cancelar&codigo=1
 ```
 
-4. Adicionar mercadorias a um pedido específico
+#### 4. Adicionar mercadorias a um pedido específico
 
 ID | O | Parâmetro | Tipo | Descrição
 :---: | :---: | :---: | :---: | :---
@@ -64,9 +64,9 @@ Exemplo de retorno JSON para mercadorias:
 }
 ```
 
-##### Requisições via GET
+### Requisições via GET
 
-1. Obter todas as informações das mercadorias de uma categoria
+#### 1. Obter todas as informações das mercadorias de uma categoria
 
 ID | O | Parâmetro | Tipo | Descrição
 :---: | :---: | :---: | :---: | :---
@@ -76,7 +76,7 @@ ID | O | Parâmetro | Tipo | Descrição
 index.php?categoria=lanche
 ```
 
-2. Obter informações sobre uma mercadoria específica
+#### 2. Obter informações sobre uma mercadoria específica
 
 ID | O | Parâmetro | Tipo | Descrição
 :---: | :---: | :---: | :---: | :---
@@ -125,6 +125,4 @@ index.php?categoria=lanche&codigo=1
 }
 ```
 
-OBS: Disponibilidade atual apenas para categoria “lanche”
-
-Este foi um projeto universitário da disciplina de **Sistemas Distribuídos**
+OBS: Disponibilidade atual apenas para categoria “lanche”.
