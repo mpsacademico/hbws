@@ -5,7 +5,7 @@ O objetivo é integrar e automatizar o sistema administrativo e de suplementos d
 Este foi um projeto universitário da disciplina de Sistemas Distribuídos envolvendo codificação e documentação.  
 Os dados estatísticos do sistema são coletados e exibidos pelo sistema cliente [HBWS stats](https://github.com/mpsacademico/hbws-stats#hbwsstats).
 
-A documentação abaixo demonstra exemplos de uso funcionalidades.
+A documentação abaixo demonstra exemplos de uso das funcionalidades.
 
 **[Requisições via POST](#requisições-via-post)**  
 [1. Registrar um novo pedido](#1-registrar-um-novo-pedido)  
